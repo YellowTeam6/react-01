@@ -1,3 +1,4 @@
+
 import React from "react"
 import { Form, Icon, Input, Button, Checkbox ,Card} from 'antd'
 import Style from "./login.module.less"
@@ -54,3 +55,4 @@ class Login extends React.Component{
     }
 }
 export default Form.create()(Login)
+
