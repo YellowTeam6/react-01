@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './router';
 import "antd/dist/antd.css"
 import * as serviceWorker from './serviceWorker';
+import axios from "./utils/axios"
+
+React.Component.prototype.$axios=axios
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
