@@ -4,7 +4,7 @@ class Management extends React.Component{
     render(){
         return(
             <div>
-                1
+                122
             </div>
         )
     }
