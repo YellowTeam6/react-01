@@ -40,7 +40,9 @@ class Login extends React.Component{
                     Forgot password
                 </a>
                 <div className={Style.btn}>
-                <Button type="primary" className="login-form-button">
+                <Button type="primary" className="login-form-button" onClick={()=>{
+                    
+                }}>
                     登录
                 </Button>
                  <Button onClick={()=>{

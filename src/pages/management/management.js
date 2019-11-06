@@ -1,13 +1,13 @@
 import React from "react"
 
-class Admin extends React.Component{
+class Management extends React.Component{
     render(){
         return(
             <div>
-            {this.props.children}
+                1
             </div>
         )
     }
 }
 
-export default Admin
+export default Management
