@@ -1,10 +1,11 @@
 
 import React from "react"
 import {HashRouter,Switch,Route,Redirect} from 'react-router-dom'
-import Login from "./pages/login/login"
-import Admin from "./pages/admin/admin"
-import Reg from "./pages/reg/reg"
+import loadable from "./utils/loadable"
 
+const Login = loadable (()=>import("./pages/login/login"))
+const Admin = loadable (()=>import("./pages/admin/admin"))
+const Reg = loadable (()=>import("./pages/reg/reg"))
 class RootRoute extends React.Component{
     render(){
        return(
