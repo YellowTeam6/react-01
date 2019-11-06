@@ -69,7 +69,7 @@ class Reg extends React.Component{
         return(
             <div className={Style.reg}>
             <Card className={Style.card}>
-                <Form.Item label="E-mail">
+                <Form.Item label="邮箱">
                 {getFieldDecorator('email', {
                     rules: [
                     {
@@ -83,7 +83,7 @@ class Reg extends React.Component{
                     ],
                 })(<Input />)}
                 </Form.Item>
-                <Form.Item label="Password" hasFeedback>
+                <Form.Item label="密码" hasFeedback>
                 {getFieldDecorator('password', {
                     rules: [
                     {
@@ -96,7 +96,7 @@ class Reg extends React.Component{
                     ],
                 })(<Input.Password />)}
                 </Form.Item>
-                <Form.Item label="Confirm Password" hasFeedback>
+                <Form.Item label="确认密码" hasFeedback>
                 {getFieldDecorator('confirm', {
                     rules: [
                     {
@@ -112,7 +112,7 @@ class Reg extends React.Component{
                 <Form.Item
                 label={
                     <span>
-                    Nickname&nbsp;
+                    用户名&nbsp;
                     <Tooltip title="What do you want others to call you?">
                         <Icon type="question-circle-o" />
                     </Tooltip>
@@ -124,13 +124,14 @@ class Reg extends React.Component{
                 })(<Input />)}
                 </Form.Item>
 
-                <Form.Item label="Phone Number">
-                {getFieldDecorator('phone', {
+                <Form.Item label="手机号码">
+                {getFieldDecorator(
+                  'phone', {
                     rules: [{ required: true, message: 'Please input your phone number!' }],
                 })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
                 </Form.Item>
                
-                <Form.Item label="Captcha" extra="We must make sure that your are a human.">
+                <Form.Item label="验证码" extra="We must make sure that your are a human.">
                 <Row gutter={8}>
                     <Col span={12}>
                     {getFieldDecorator('captcha', {
@@ -138,7 +139,7 @@ class Reg extends React.Component{
                     })(<Input />)}
                     </Col>
                     <Col span={12}>
-                    <Button>Get captcha</Button>
+                    <Button>点击获取</Button>
                     </Col>
                 </Row>
                 </Form.Item>
@@ -153,7 +154,7 @@ class Reg extends React.Component{
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout}>
                 <Button type="primary" htmlType="submit">
-                    Register
+                    注册
                 </Button>
                 </Form.Item>
             </Card>
