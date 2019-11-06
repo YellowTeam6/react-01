@@ -41,13 +41,15 @@ class Login extends React.Component{
                 </a>
                 <div className={Style.btn}>
                 <Button type="primary" className="login-form-button" onClick={()=>{
-                    
+
+                    this.props.history.push("/admin/pie")
+
                 }}>
                     登录
                 </Button>
                  <Button onClick={()=>{
                     console.log(this)
-                    //this.props.history.replace("/reg")
+                    this.props.history.push("/reg")
                 }}>注册</Button>
                 </div>
                 </Form.Item>
