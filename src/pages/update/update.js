@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+﻿import React, { Fragment } from "react"
 import {Card} from "antd"
 import Style from  "./update.module.less"
 
@@ -9,6 +9,7 @@ class Update extends React.Component{
             img:""
         }
     }
+
     update(){
         let img=this.refs.file.files[0]
         let File=new FileReader()
@@ -29,6 +30,7 @@ class Update extends React.Component{
                 <button onClick={this.update.bind(this)}>提交</button>
                 <br/>
                 <img src={this.state.img} className={Style.img}/>
+
             </Card>
             </Fragment>
         )
