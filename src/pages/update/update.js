@@ -10,7 +10,15 @@ class Update extends React.Component{
         }
     }
     update(){
-
+        let img=this.refs.file.files[0]
+        let File=new FileReader()
+        File.onload=()=>{
+            console.log("结束")
+            console.log(File.result)
+            this.setState({img:File.result})
+        }
+        console.log(File)
+        File.readAsDataURL(img)
     }
     render(){
         return(
@@ -18,9 +26,9 @@ class Update extends React.Component{
             <Card className={Style.card}>
                 <input type="file" ref="file"/>
                 <br/>
-                <button onClick={this.update}>提交</button>
+                <button onClick={this.update.bind(this)}>提交</button>
                 <br/>
-                <img src="this.state.img" className={Style.img}/>
+                <img src={this.state.img} className={Style.img}/>
             </Card>
             </Fragment>
         )

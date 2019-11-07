@@ -20,14 +20,16 @@ class Sliders extends React.Component{
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
               <Menu.Item key="1">
-              <Icon type="user" />
+              <Icon type="cloud-o" />
               <span className="nav-text" onClick={()=>{
                 this.props.history.push("/admin/pie")
               }}>分析图</span>
               </Menu.Item>
               <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span className="nav-text">权限信息</span>
+              <Icon type="user" />
+              <span className="nav-text" onClick={()=>{
+                this.props.history.push("/admin/management")
+              }}>管理员管理</span>
               </Menu.Item>
               <Menu.Item key="3">
               <Icon type="upload" />
@@ -36,7 +38,7 @@ class Sliders extends React.Component{
               }}>上传图片</span>
               </Menu.Item>
               <Menu.Item key="4">
-              <Icon type="user" />
+              <Icon type="bar-chart" />
               <span className="nav-text">总结</span>
               </Menu.Item>
           </Menu>
