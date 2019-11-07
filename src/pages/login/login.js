@@ -41,7 +41,9 @@ class Login extends React.Component{
                 </a>
                 <div className={Style.btn}>
                 <Button type="primary" className="login-form-button" onClick={()=>{
+
                     this.props.history.push("/admin/pie")
+
                 }}>
                     登录
                 </Button>

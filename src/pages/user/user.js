@@ -3,7 +3,7 @@ import React from "react"
 class User extends React.Component{
     render(){
         return(
-            <div>用户</div>
+            <div>用户1</div>
         )
     }
 }
