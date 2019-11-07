@@ -1,4 +1,3 @@
-
 import React from "react"
 import { Layout, Menu, Icon ,Carousel} from 'antd';
 import Sliders from "../slider/slider"
