@@ -1,5 +1,5 @@
 import React from "react"
-import {Form,Input,Tooltip,Icon,Cascader,Select,Row,Col,Checkbox,Button,Card} from 'antd';
+import {Form,Input,Tooltip,Icon,Cascader,Select,Row,Col,Checkbox,Button,Card,message} from 'antd';
 import Style from "./reg.module.less"
 
 const residences = [
@@ -56,35 +56,32 @@ const residences = [
   
 
 class Reg extends React.Component{
+  reg=()=>{
+    this.props.form.validateFields((err,userinfo)=>{
+      if(err){
+        message.error("信息输入有误请重试")
+      }else{
+        this.$axios.post("/hehe/admin/user/reg",userinfo).then((data)=>{
+          console.log(data)
+          if(data.err===0){
+            //存值
+            //跳转到首页
+            this.props.history.push("/admin/user/login")
+        }
+        })
+      }
+    })
+  }
     render(){
-        console.log(this)
+        
         const { getFieldDecorator } = this.props.form;
-        const prefixSelector = getFieldDecorator('prefix', {
-            initialValue: '86',
-          })(
-            <Select style={{ width: 70 }}>
-              
-            </Select>,
-          );
+        
         return(
             <div className={Style.reg}>
             <Card className={Style.card}>
-                <Form.Item label="邮箱">
-                {getFieldDecorator('email', {
-                    rules: [
-                    {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
-                    },
-                    {
-                        required: true,
-                        message: 'Please input your E-mail!',
-                    },
-                    ],
-                })(<Input />)}
-                </Form.Item>
+               
                 <Form.Item label="密码" hasFeedback>
-                {getFieldDecorator('password', {
+                {getFieldDecorator('ps', {
                     rules: [
                     {
                         required: true,
@@ -119,30 +116,10 @@ class Reg extends React.Component{
                     </span>
                 }
                 >
-                {getFieldDecorator('nickname', {
+                {getFieldDecorator('us', {
                     rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
                 })(<Input />)}
-                </Form.Item>
-
-                <Form.Item label="手机号码">
-                {getFieldDecorator(
-                  'phone', {
-                    rules: [{ required: true, message: 'Please input your phone number!' }],
-                })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
-                </Form.Item>
-               
-                <Form.Item label="验证码" extra="We must make sure that your are a human.">
-                <Row gutter={8}>
-                    <Col span={12}>
-                    {getFieldDecorator('captcha', {
-                        rules: [{ required: true, message: 'Please input the captcha you got!' }],
-                    })(<Input />)}
-                    </Col>
-                    <Col span={12}>
-                    <Button>点击获取</Button>
-                    </Col>
-                </Row>
-                </Form.Item>
+                </Form.Item>            
                 <Form.Item {...tailFormItemLayout}>
                 {getFieldDecorator('agreement', {
                     valuePropName: 'checked',
@@ -153,7 +130,7 @@ class Reg extends React.Component{
                 )}
                 </Form.Item>
                 <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit" onClick={this.reg}>
                     注册
                 </Button>
                 </Form.Item>
