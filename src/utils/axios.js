@@ -1,4 +1,6 @@
 import axios from "axios"
+import store from "../store/store"
+import actionCreator from "../store/actionCreator"
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
@@ -12,7 +14,14 @@ axios.interceptors.request.use(function (config) {
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
     // Do something with response data
+    let {err} =response.data
+    let arr=[-997,-998]
+    if(arr.indexOf(err)>=0){
+      let action=actionCreator.changeTokenModal(false)
+      store.dispatch(action)
+    }
     return response.data;
+     
   }, function (error) {
     // Do something with response error
     return Promise.reject(error);

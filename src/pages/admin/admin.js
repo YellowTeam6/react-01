@@ -2,6 +2,7 @@ import React from "react"
 import { Layout, Menu, Icon ,Carousel} from 'antd';
 import Sliders from "../slider/slider"
 import Style from "./admin.module.less"
+import Modal from "../../components/modal/modal"
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -42,6 +43,7 @@ class Admin extends React.Component{
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
+                 <Modal></Modal>
             </Layout>
         );
     }
