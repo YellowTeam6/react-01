@@ -1,4 +1,3 @@
-import JsApiReporter from "_jest-jasmine2@24.9.0@jest-jasmine2/build/jasmine/JsApiReporter";
 
 export default {
     getItem(key){
