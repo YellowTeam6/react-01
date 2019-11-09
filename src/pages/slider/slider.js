@@ -19,23 +19,23 @@ class Sliders extends React.Component{
           >
           <div className="logo" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-              <Menu.Item key="1">
-              <Icon type="cloud-o" />
-              <span className="nav-text" onClick={()=>{
+              <Menu.Item key="1" onClick={()=>{
                 this.props.history.push("/admin/pie")
-              }}>分析图</span>
+              }}>
+              <Icon type="cloud-o" />
+              <span className="nav-text" >分析图</span>
               </Menu.Item>
-              <Menu.Item key="2">
-              <Icon type="user" />
-              <span className="nav-text" onClick={()=>{
+              <Menu.Item key="2" onClick={()=>{
                 this.props.history.push("/admin/management")
-              }}>管理员管理</span>
+              }}>
+              <Icon type="user" />
+              <span className="nav-text">管理员管理</span>
               </Menu.Item>
-              <Menu.Item key="3">
-              <Icon type="upload" />
-              <span className="nav-text" onClick={()=>{
+              <Menu.Item key="3" onClick={()=>{
                 this.props.history.replace("./update")
-              }}>上传图片</span>
+              }}>
+              <Icon type="upload" />
+              <span className="nav-text">上传图片</span>
               </Menu.Item>
               <Menu.Item key="4">
               <Icon type="bar-chart" />
