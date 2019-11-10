@@ -3,6 +3,7 @@ import { Card, Button, Icon, Table , Pagination} from "antd"
 
 
 class Management extends React.Component {
+
     columns = [
         {
             title: 'ID',
@@ -94,11 +95,11 @@ class Management extends React.Component {
                         添加角色
                     </Button>
                 </div>
-                    <div>总数据条数{this.data.length}</div>
+                    <div>总数据条数:{this.data.length}</div>
                 </div>
                 <Card title="角色管理">
                     <Table rowSelection={this.rowSelection} columns={this.columns} dataSource={this.data} pagination={false}/>
-                    <Pagination simple defaultCurrent={1} total={50} style={{marginLeft:"38%",marginTop:"15px"}}/>
+                    <Pagination simple defaultCurrent={1} total={50} style={{marginTop:"15px",height:"50px"}}/>
                 </Card>
             </Fragment>
         )

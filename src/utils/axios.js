@@ -1,10 +1,15 @@
 import axios from "axios"
 import store from "../store/store"
 import actionCreator from "../store/actionCreator"
+import webstorage from "./webstorage"
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
     // Do something before request is sent
+    if(!config.data){
+      config.data={}
+    }
+    config.data.token = webstorage.getItem("token")
     return config;
   }, function (error) {
     // Do something with request error
