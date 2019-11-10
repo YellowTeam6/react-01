@@ -48,7 +48,7 @@ class Admin extends React.Component{
                 </Carousel>
                 
                 </Header>
-                <Content style={{ margin: '24px 16px 0', overflow: 'initial',position:"relative",top:60}}>
+                <Content style={{ margin: '24px 16px 0', overflow: 'initial',position:"relative",top:60,marginBottom:"100px"}}>
                     <div style={{ padding: 24, background: '#fff', textAlign: 'center' }}>{this.props.children}</div>
                 </Content>
                 <Footer style={{ textAlign: 'center' ,position:"relative",bottom:0}}>Ant Design ©2018 Created by Ant UED</Footer>
