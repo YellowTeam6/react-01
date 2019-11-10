@@ -12,9 +12,11 @@ class Login extends React.Component{
             } else{
                 this.$axios.post("/hehe/admin/user/login",userinfo).then((data)=>{
                     console.log(data)
-                    if(data.err==0){
-                       // webstorage.setItem("rootlist",data.rootList)
-                       this.props.history.push("/admin/management")
+                    if(data.err===0){
+                        webstorage.setItem("list",data.list)
+                        webstorage.setItem("token",data.token)
+                        webstorage.setItem("uid",data.uid)
+                       this.props.history.push("/admin/pie")
                     }
                 })
             } 
