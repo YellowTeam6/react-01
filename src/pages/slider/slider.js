@@ -1,48 +1,47 @@
 import React from "react"
 import {withRouter} from "react-router-dom"
-import { Layout, Menu, Icon } from 'antd';
-const { Header, Content, Footer, Sider } = Layout;
+import { Layout, Menu} from 'antd';
+import webStorage from "../../utils/webstorage"
+const { Sider } = Layout;
+const { SubMenu } = Menu;
 
+const root=webStorage.getItem("list")||[]
 class Sliders extends React.Component{
-  
+  jump=(path)=>{
+    this.props.history.push(path)
+  }
+  renderItem=(data)=>{
+    return data.map((item,index)=>{
+      if(item.children){
+        return(
+          <SubMenu key={index} title={item.title}>
+            {this.renderItem(item.children)}
+          
+          </SubMenu>
+        )
+      }else{
+        return(
+          <Menu.Item key={index} onClick={this.jump.bind(this,item.path)}>
+          {item.title}
+          </Menu.Item>
+        )
+      }
+    })
+  }
+
     render(){
         return(
-          <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          onBreakpoint={broken => {
-              console.log(broken);
-          }}
-          onCollapse={(collapsed, type) => {
-              console.log(collapsed, type);
-          }}
+          
+          <Menu
+          mode="vertical"
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1']}
+          style={{ height: '100%', borderRight: 0 }}
+          theme="dark"
           >
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-              <Menu.Item key="1" onClick={()=>{
-                this.props.history.push("/admin/pie")
-              }}>
-              <Icon type="cloud-o" />
-              <span className="nav-text" >分析图</span>
-              </Menu.Item>
-              <Menu.Item key="2" onClick={()=>{
-                this.props.history.push("/admin/management")
-              }}>
-              <Icon type="user" />
-              <span className="nav-text">管理员管理</span>
-              </Menu.Item>
-              <Menu.Item key="3" onClick={()=>{
-                this.props.history.replace("./update")
-              }}>
-              <Icon type="upload" />
-              <span className="nav-text">上传图片</span>
-              </Menu.Item>
-              <Menu.Item key="4">
-              <Icon type="bar-chart" />
-              <span className="nav-text">总结</span>
-              </Menu.Item>
+             {this.renderItem(root)}
           </Menu>
-          </Sider>
+          
         )
     }
 }

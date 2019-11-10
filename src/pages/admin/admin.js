@@ -1,5 +1,5 @@
-import React from "react"
-import { Layout, Menu, Icon ,Carousel} from 'antd';
+import React, { Fragment } from "react"
+import { Layout,PageHeader ,Carousel,Menu} from 'antd';
 import Sliders from "../slider/slider"
 import Style from "./admin.module.less"
 import Modal from "../../components/modal/modal"
@@ -11,22 +11,32 @@ const { Header, Content, Footer, Sider } = Layout;
 class Admin extends React.Component{
     render(){
         return (
+            <Fragment>
+            <Header className="header"  style={{ lineHeight: '64px' ,position:"fixed",zIndex:"9",left:0,right:0,}}>
+                <Menu
+                    theme="dark"
+                    mode="horizontal"
+                    defaultSelectedKeys={['2']}
+                    style={{ lineHeight: '64px' ,position:"fixed"}}
+                >
+                    <Menu.Item key="1" style={{fontSize:"22px",color:"#fff"}}>电商一体化后台管理系统</Menu.Item>
+                    
+                </Menu>
+            </Header>
             <Layout>
                 <Sider
-                breakpoint="lg"
-                collapsedWidth="0"
-                onBreakpoint={broken => {
-                    console.log(broken);
-                }}
-                onCollapse={(collapsed, type) => {
-                    console.log(collapsed, type);
-                }}
-                >
+                style={{
+                    overflow: 'auto',
+                    height: '100vh',
+                    position: 'fixed',
+                    left: 0,
+                    top:64
+                }}>
                 
                     <Sliders></Sliders>
                 </Sider>
-                <Layout>
-                <Header style={{ background: '#fff', padding: 0 }} >
+                <Layout style={{ marginLeft: 200 }}>
+                <Header style={{ background: '#fff', padding: 0,position:"relative",top:64 }} >
                 <Carousel autoplay>
                     <div className={Style.carous}>
                          <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3622168883,2039075439&fm=26&gp=0.jpg" className={Style.img}/>
@@ -38,13 +48,14 @@ class Admin extends React.Component{
                 </Carousel>
                 
                 </Header>
-                <Content style={{ margin: '24px 16px 0' }}>
-                    <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>{this.props.children}</div>
+                <Content style={{ margin: '24px 16px 0', overflow: 'initial',position:"relative",top:60}}>
+                    <div style={{ padding: 24, background: '#fff', textAlign: 'center' }}>{this.props.children}</div>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                <Footer style={{ textAlign: 'center' ,position:"relative",bottom:0}}>Ant Design ©2018 Created by Ant UED</Footer>
                 </Layout>
                  <Modal></Modal>
             </Layout>
+            </Fragment>
         );
     }
 }

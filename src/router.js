@@ -20,9 +20,9 @@ class RootRoute extends React.Component{
                 <Route path="/admin" component={()=>{
                     return (
                         <Admin>
-                            <Route path="/admin/management" component={Management}></Route>
-                            <Route path="/admin/pie" component={Pie}></Route>
-                            <Route path="/admin/update" component={Update}></Route>
+                            <Route path="/admin/user" component={Management}></Route>
+                            <Route path="/admin/home" component={Pie}></Route>
+                            <Route path="/admin/foodlist" component={Update}></Route>
                         </Admin>
                     )
                 }}>  
