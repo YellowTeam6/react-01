@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { Card, Button, Icon, Table } from "antd"
+import { Card, Button, Icon, Table , Pagination} from "antd"
 
 
 class Management extends React.Component {
@@ -97,7 +97,8 @@ class Management extends React.Component {
                     <div>总数据条数{this.data.length}</div>
                 </div>
                 <Card title="角色管理">
-                    <Table rowSelection={this.rowSelection} columns={this.columns} dataSource={this.data} />
+                    <Table rowSelection={this.rowSelection} columns={this.columns} dataSource={this.data} pagination={false}/>
+                    <Pagination simple defaultCurrent={1} total={50} style={{marginLeft:"38%",marginTop:"15px"}}/>
                 </Card>
             </Fragment>
         )
