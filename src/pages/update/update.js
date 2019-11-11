@@ -71,24 +71,16 @@ class Update extends React.Component{
         })
     }
     render(){
-        let {dataSource,name,desc,price}=this.state
+        let {dataSource,name,desc,price,img}=this.state
         return(
             <Table dataSource={dataSource}>
                 <Column title="商品名称" dataIndex="name" key="name" />
                 <Column title="价格" dataIndex="price" key="price" />
                 <Column title="详情" dataIndex="desc" key="desc" />
                 <Column
-                title="商品图片"
-                key="action"
-                render={() => (
-                    <Fragment >
-                            <input type="file" ref="file" id="file"/>
-                    </Fragment>
-
-                )}
-                />
+                title="商品图片" dataIndex="img" key="desc" />
                 <Column
-                title="操作"
+                title="操作"ll
                 key="action"
                 render={(data) => (
                     <Fragment><Button onClick={this.update.bind(this)}>提交</Button><Button onClick={this.delete.bind(this,data._id)}>删除</Button></Fragment>
