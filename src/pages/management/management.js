@@ -3,74 +3,59 @@ import { Card, Button, Icon, Table , Pagination} from "antd"
 
 
 class Management extends React.Component {
-
+    constructor(){
+        super();
+        this.state={
+            dataSource:[],
+            total:0
+        }
+    }
     columns = [
         {
-            title: 'ID',
-            dataIndex: 'ID',
-            render: text => <a>{text}</a>,
+            title: '账号',
+            dataIndex: 'us',
+            key: 'name',
         },
         {
-            title: '角色名',
-            dataIndex: 'name',
-        },
-        {
-            title: '用户列表',
-            dataIndex: 'list',
-        },
-        {
-            title: '描述',
-            dataIndex: 'describe',
+            title: '密码',
+            dataIndex: 'ps',
+            key: 'age',
         },
         {
             title: '操作',
-            dataIndex: 'del',
+            key: 'del',
+            render: (data) => {
+                return (
+                    <div>
+                        <Button size="small">修改</Button>
+                        <Button size="small" onClick={this.del.bind(this,data._id)}>删除</Button>  
+                    </div>
+                    
+                )
+            }
         },
-    ];
-    data = [
-        {
-            ID: '1',
-            name: '超级管理员',
-            list: "丁东存",
-            describe: '拥有至高无上的权利',
-            del: <div>
-                    <Button size="small">修改</Button>
-                    <Button size="small">删除</Button>
-                </div>
-        },
-        {
-            ID: '2',
-            name: '总编',
-            list: "刘梅枝",
-            describe: '具有添加、审核、发布、删除内容的权限',
-            del: <div>
-                    <Button size="small">修改</Button>
-                    <Button size="small">删除</Button>
-                </div>
-        },
-        {
-            ID: '3',
-            name: '栏目主编',
-            list: "刘宝云",
-            describe: '只对所在栏目具有添加、审核、发布、删除内容的权限',
-            del: <div>
-                    <Button size="small">修改</Button>
-                    <Button size="small">删除</Button>
-                </div>
-        },
-        {
-            ID: '4',
-            name: '栏目编辑',
-            list: "王帅",
-            describe: '只对所在栏目具有添加、删除草稿等权利',
-            del: <div>
-                    <Button size="small">修改</Button>
-                    <Button size="small">删除</Button>
-                </div>
-        },
-
-    ];
-
+    ]
+    componentDidMount(){
+        this.Management()
+    }
+    Management(){
+        this.$axios.post("/hehe/admin/supperuser/findByKw")
+        .then((data)=>{
+            console.log(data)
+            if(data.err===0){
+                this.setState({dataSource:data.list,total:data.total})
+            }
+        })
+    }
+    del(_id){
+        this.$axios.post("/hehe/admin/supperuser/del",{_id})
+        .then((data)=>{
+            console.log(data)
+            if(data.err===0){
+                this.Management()
+            }
+        })
+    }
     // rowSelection object indicates the need for row selection
     rowSelection = {
         onChange: (selectedRowKeys, selectedRows) => {
@@ -82,6 +67,7 @@ class Management extends React.Component {
         }),
     };
     render() {
+        let {dataSource,total} = this.state;
         return (
             <Fragment>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -95,10 +81,10 @@ class Management extends React.Component {
                         添加角色
                     </Button>
                 </div>
-                    <div>总数据条数:{this.data.length}</div>
+                    <div>总数据条数:{total}</div>
                 </div>
                 <Card title="角色管理">
-                    <Table rowSelection={this.rowSelection} columns={this.columns} dataSource={this.data} pagination={false}/>
+                    <Table rowSelection={this.rowSelection} columns={this.columns} dataSource={dataSource} pagination={false}/>
                     <Pagination simple defaultCurrent={1} total={50} style={{marginTop:"15px",height:"50px"}}/>
                 </Card>
             </Fragment>
