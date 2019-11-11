@@ -9,7 +9,6 @@ const Reg = loadable (()=>import("./pages/reg/reg"))
 const Management = loadable(()=>import("./pages/management/management"))
 const Pie = loadable (()=>import("./pages/pie/pie"))
 const Update = loadable (()=>import("./pages/update/update"))
-const Ad=loadable(()=>import("./pages/add/add"))
 class RootRoute extends React.Component{
     render(){
        return(
@@ -24,7 +23,6 @@ class RootRoute extends React.Component{
                             <Route path="/admin/user" component={Management}></Route>
                             <Route path="/admin/home" component={Pie}></Route>
                             <Route path="/admin/foodlist" component={Update}></Route>
-                            
                         </Admin>
                     )
                 }}>  

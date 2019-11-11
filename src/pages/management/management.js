@@ -1,5 +1,6 @@
 import React, { Fragment } from "react"
-import { Card, Button, Icon, Table , Pagination} from "antd"
+import { Card, Button, Icon, Table } from "antd"
+import Add from "../../components/add/add"
 
 
 class Management extends React.Component {
@@ -7,7 +8,8 @@ class Management extends React.Component {
         super();
         this.state={
             dataSource:[],
-            total:0
+            total:0,
+            flag:false
         }
     }
     columns = [
@@ -24,10 +26,13 @@ class Management extends React.Component {
         {
             title: '操作',
             key: 'del',
-            render: (data) => {
+            render: (data,flag) => {
                 return (
                     <div>
-                        <Button size="small">修改</Button>
+                        <Button size="small" onClick={()=>{
+                            console.log(flag)
+                           
+                        }}>修改</Button>
                         <Button size="small" onClick={this.del.bind(this,data._id)}>删除</Button>  
                     </div>
                     
@@ -56,27 +61,25 @@ class Management extends React.Component {
             }
         })
     }
-    // rowSelection object indicates the need for row selection
-    rowSelection = {
-        onChange: (selectedRowKeys, selectedRows) => {
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-        },
-        getCheckboxProps: record => ({
-            disabled: record.name === 'Disabled User', // Column configuration not to be checked
-            name: record.name,
-        }),
-    };
+    add(){
+        this.setState({flag:true})
+    }
+    adds(val){
+        if(val){
+            this.setState({flag:false})
+            this.Management()
+        }else{
+            this.setState({flag:false})
+        }
+        
+    }
     render() {
-        let {dataSource,total} = this.state;
+        let {dataSource,total,flag} = this.state;
         return (
             <Fragment>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-                    <Button style={{ marginBottom: "0.2rem", background: "tomato" }}>
-                        <Icon type="close" />
-                        批量删除
-                    </Button>
-                    <Button style={{ marginBottom: "0.2rem", background: "skyblue" }} >
+                    <Button style={{ marginBottom: "0.2rem", background: "skyblue" }} onClick={this.add.bind(this)}>
                         <Icon type="plus" />
                         添加角色
                     </Button>
@@ -84,9 +87,9 @@ class Management extends React.Component {
                     <div>总数据条数:{total}</div>
                 </div>
                 <Card title="角色管理">
-                    <Table rowSelection={this.rowSelection} columns={this.columns} dataSource={dataSource} pagination={false}/>
-                    <Pagination simple defaultCurrent={1} total={50} style={{marginTop:"15px",height:"50px"}}/>
+                    <Table columns={this.columns} dataSource={dataSource} rowKey="_id"/>
                 </Card>
+                {flag?<Add adds={this.adds.bind(this)} ></Add>:""}
             </Fragment>
         )
     }
