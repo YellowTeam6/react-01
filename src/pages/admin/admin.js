@@ -1,7 +1,6 @@
 import React, { Fragment } from "react"
 import { Layout,PageHeader ,Carousel,Menu} from 'antd';
 import Sliders from "../slider/slider"
-import Style from "./admin.module.less"
 import Modal from "../../components/modal/modal"
 
 
@@ -37,15 +36,15 @@ class Admin extends React.Component{
                 </Sider>
                 <Layout style={{ marginLeft: 200 }}>
                 <Header style={{ background: '#fff', padding: 0,position:"relative",top:64 }} >
-                <Carousel autoplay>
-                    <div className={Style.carous}>
-                         <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3622168883,2039075439&fm=26&gp=0.jpg" className={Style.img}/>
-                    </div>
-                    <div className={Style.carous}>
-                        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2946981926,894037869&fm=26&gp=0.jpg" className={Style.img}/>
-                    </div>
+//                 <Carousel autoplay>
+//                     <div className={Style.carous}>
+//                          <img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3622168883,2039075439&fm=26&gp=0.jpg" className={Style.img}/>
+//                     </div>
+//                     <div className={Style.carous}>
+//                         <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2946981926,894037869&fm=26&gp=0.jpg" className={Style.img}/>
+//                     </div>
                     
-                </Carousel>
+//                 </Carousel>
                 
                 </Header>
                 <Content style={{ margin: '24px 16px 0', overflow: 'initial',position:"relative",top:60,marginBottom:"100px"}}>
